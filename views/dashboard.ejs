@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My App</title>
+    <style>
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        nav {
+            margin-bottom: 20px;
+        }
+        section {
+            display: none; /* Initially hide all sections */
+        }
+        section.active {
+            display: block; /* Show active section */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>My App</h1>
+        <nav>
+            <button onclick="showSection('home')">Home</button>
+            <button onclick="showSection('friends')">Friends</button>
+            <button onclick="showSection('earn')">Earn</button>
+            <button onclick="showSection('booster')">Booster</button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Sections for different content -->
+        <section id="home" class="active">
+            <div class="app">
+                <section class="one user-details" id="userdetails">
+                    <h2 class="username"><%= user.username %></h2>
+                    <h2 class="balance">
+                        <img src="images/logo.png" alt="logo">
+                        <span><!--<%= user.balance %>--->10000</span>
+                    </h2>
+                </section>
+                <section class="two hammer">
+                    <div class="hammer-start">
+                        <img src="images/Start.gif" alt="hammer hitting vault">
+                    </div>
+                </section>
+                <section class="three claimform">
+                    
+                    <div class="time-left">
+                        <h2>CLAIM IN</h2>    
+                        <div class="hours">05h</div>
+                        <div class="minutes">03m</div>
+                        <div class="seconds">05s</div>
+                    </div>
+                    <form action="/claim" method="post">
+                        <button type="submit" disabled>Claim 1000</button>
+                    </form>
+                </section>
+                <section class="four fixedNav">
+                    <nav>
+        
+                        <a href="/friends" class="nav-link">
+                            <img src="assets/friends.svg" width="20px" alt="">
+                            Friends
+                        </a>
+                       
+                                <a href="/" class="nav-link active">
+                                    <img src="assets/smash.svg" width="20px" alt="">
+                                    Smash</a>
+                            
+                                    <a href="/earn" class="nav-link">
+                                        <img src="assets/earn.svg" width="20px" alt="">
+                                        Earn
+                                    </a>     
+                                <a href="/boost" class="nav-link">
+                                    <img src="assets/boost.svg" width="20px" alt="">
+                                    Boost</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </section>
+            </div>
+        </section>
+
+        <section id="earn">
+            <div class="app">
+                <section class="task-title">
+                    <h2>Heirston tasks</h2>
+                    <p>Complete tasks to earn more point and join heirston community to get updates.</p>
+                </section>
+               <section class="tasks-actions">    
+                <div class="task">
+                <form action="/completeTask" name="telegramOne" method="post">
+                   
+                        <div class="task-image">
+                            <img src="/assets/telegram.svg" width="35px" alt="">
+                        </div>
+                        <div class="task-details">
+                            <h2 class="task-name">Join Heirston Telegram</h2>
+                            <p class="task-reward">+2000 $HON</p>
+                        </div>
+                        <div class="task-claim">
+                            <button type="submit" style="color: antiquewhite;">
+                                <a href="t.me/heirston" target="_blank">Claim</a>
+                            </button>
+                        </div>
+                        </form>
+                    </div>      
+                    <div class="task">
+                        <form action="/completeTask" name="telegramOne" method="post">
+                           
+                                <div class="task-image">
+                                    <img src="/images/instagram.svg" width="35px" alt="">
+                                </div>
+                                <div class="task-details">
+                                    <h2 class="task-name">Join Heirston Telegram</h2>
+                                    <p class="task-reward">+2000 $HON</p>
+                                </div>
+                                <div class="task-claim">
+                                    <button type="submit" style="color: antiquewhite;">
+                                        <a href="t.me/heirston" target="_blank">Claim</a>
+                                    </button>
+                                </div>
+                                </form>
+                            </div>
+                            <div class="task">
+                                <form action="/completeTask" name="telegramOne" method="post">
+                                   
+                                        <div class="task-image">
+                                            <img src="/images/tiktok.svg" width="35px" alt="">
+                                        </div>
+                                        <div class="task-details">
+                                            <h2 class="task-name">Join Heirston Telegram</h2>
+                                            <p class="task-reward">+2000 $HON</p>
+                                        </div>
+                                        <div class="task-claim">
+                                            <button type="submit" style="color: antiquewhite;">
+                                                <a href="t.me/heirston" target="_blank">Claim</a>
+                                            </button>
+                                        </div>
+                                        </form>
+                                    </div>
+                                    <div class="task">
+                                        <form action="/completeTask" name="telegramOne" method="post">
+                                           
+                                                <div class="task-image">
+                                                    <img src="/images/youtube.svg" width="35px" alt="">
+                                                </div>
+                                                <div class="task-details">
+                                                    <h2 class="task-name">Join Heirston Telegram</h2>
+                                                    <p class="task-reward">+2000 $HON</p>
+                                                </div>
+                                                <div class="task-claim">
+                                                    <button type="submit" style="color: antiquewhite;">
+                                                        <a href="t.me/heirston" target="_blank">Claim</a>
+                                                    </button>
+                                                </div>
+                                                </form>
+                                            </div>
+                                            <div class="task">
+                                                <form action="/completeTask" name="telegramOne" method="post">
+                                                   
+                                                        <div class="task-image">
+                                                            <img src="/assets/discord.svg" width="35px" alt="">
+                                                        </div>
+                                                        <div class="task-details">
+                                                            <h2 class="task-name">Join Heirston Telegram</h2>
+                                                            <p class="task-reward">+2000 $HON</p>
+                                                        </div>
+                                                        <div class="task-claim">
+                                                            <button type="submit" style="color: antiquewhite;">
+                                                                <a href="t.me/heirston" target="_blank">Claim</a>
+                                                            </button>
+                                                        </div>
+                                                        </form>
+                                                    </div>
+                                                                
+                                     <div class="task">
+                                        <form action="/completeTask" name="telegramOne" method="post">
+                                           
+                                                <div class="task-image">
+                                                    <img src="/images/1.jpg" width="35px" alt="">
+                                                </div>
+                                                <div class="task-details">
+                                                    <h2 class="task-name">Join Heirston Telegram</h2>
+                                                    <p class="task-reward">+2000 $HON</p>
+                                                </div>
+                                                <div class="task-claim">
+                                                    <button type="submit" style="color: antiquewhite;">
+                                                        <a href="t.me/heirston" target="_blank">Claim</a>
+                                                    </button>
+                                                </div>
+                                                </form>
+                                            </div>
+                                         <!--   <div class="task">
+                                                <form action="/completeTask" name="telegramOne" method="post">
+                                                   
+                                                        <div class="task-image">
+                                                            <img src="/images/logo.png" width="35px" alt="">
+                                                        </div>
+                                                        <div class="task-details">
+                                                            <h2 class="task-name">Join Heirston Telegram</h2>
+                                                            <p class="task-reward">+2000 $HON</p>
+                                                        </div>
+                                                        <div class="task-claim">
+                                                            <button type="submit" style="color: antiquewhite;">
+                                                                <a href="t.me/heirston" target="_blank">Claim</a>
+                                                            </button>
+                                                        </div>
+                                                        </form>
+                                                    </div>
+                                           -->
+               </section> 
+               <section class="four fixedNav">
+                <nav>
+        
+                    <a href="/friends" class="nav-link">
+                        <img src="assets/friends.svg" width="20px" alt="">
+                        Frends
+                    </a>
+                   
+                            <a href="/" class="nav-link">
+                                <img src="assets/smash.svg" width="20px" alt="">
+                                Smash</a>
+                        
+                                <a href="/earn" class="nav-link active">
+                                    <img src="assets/earn.svg" width="20px" alt="">
+                                    Earn
+                                </a>     
+                            <a href="/boost" class="nav-link">
+                                <img src="assets/boost.svg" width="20px" alt="">
+                                Boost</a>
+                        </li>
+                    </ul>
+                </nav>
+            </section>
+            </div>
+        </section>
+        <section id="friends">
+            <div class="app">
+                <section class="one title" id="title">
+                        <img src="assets/friends.svg" alt="logo">
+                </section>
+                <section class="two info">
+                    <div class="invite">
+                        <span>Invite your friends and get 2000 $HON on every referral.</span>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="copy">
+                            <img src="assets/copy.svg" width="20px" alt="">
+                            Copy</button>
+                        <button class="share">
+                            <img src="assets/share.svg" width="20px" alt="">
+                            Share</button>
+                    </div>
+                </section>
+                <section class="three referral-info">
+                    <div class="referred">
+                      <h2 class="friends">Friends: 0</h2>  
+                      <h2 class="earned">Earned: 0</h2>
+                    </div>
+                   
+                </section>
+                <section class="four fixedNav">
+                    <nav>
+        
+                        <a href="/friends" class="nav-link active">
+                            <img src="assets/friends.svg" width="20px" alt="">
+                            Frends
+                        </a>
+                       
+                                <a href="/" class="nav-link">
+                                    <img src="assets/smash.svg" width="20px" alt="">
+                                    Smash</a>
+                            
+                                    <a href="/earn" class="nav-link">
+                                        <img src="assets/earn.svg" width="20px" alt="">
+                                        Earn
+                                    </a>     
+                                <a href="/boost" class="nav-link">
+                                    <img src="assets/boost.svg" width="20px" alt="">
+                                    Boost</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </section>
+            </div>
+        </section>
+        <section id="booster">
+            <div class="app">
+                <section class="task-title">
+                    <img src="public/assets/rocket.png" width="50px" alt="">
+                    <h2>Boosters</h2>
+                    <p>Reduce crack time by activating boosters.</p>
+                </section>
+               <section class="tasks-actions">    
+                <div class="task">
+                <form action="/activateBooster" name="tenMinutesBooster" method="post">
+                        <div class="task-image">
+                            <img src="/public/assets/time.svg" width="35px" alt="">
+                        </div>
+                        <div class="task-details">
+                            <h2 class="task-name">Crack in 10 Minutes</h2>
+                            <p class="task-reward">-1,000,000 $HON</p>
+                        </div>
+                        <div class="task-claim">
+                            <button type="submit" style="color: antiquewhite;">
+                                <a href="t.me/heirston" target="_blank">Activate</a>
+                            </button>
+                        </div>
+                        </form>
+                    </div>      
+                
+               </section>
+                <section class="four fixedNav">
+                    <nav>
+        
+                        <a href="friends.html" class="nav-link">
+                            <img src="public/assets/friends.svg" width="20px" alt="">
+                            Frends
+                        </a>
+                       
+                                <a href="index.html" class="nav-link">
+                                    <img src="public/assets/smash.svg" width="20px" alt="">
+                                    Smash</a>
+                            
+                                    <a href="/earn.html" class="nav-link">
+                                        <img src="public/assets/earn.svg" width="20px" alt="">
+                                        Earn
+                                    </a>     
+                                <a href="/boost.html" class="nav-link active">
+                                    <img src="public/assets/boost.svg" width="20px" alt="">
+                                    Boost</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 My App</p>
+    </footer>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Show the selected section
+            document.getElementById(sectionId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
