@@ -27,7 +27,6 @@ const userSchema = new mongoose.Schema({
     },
     balance: {
         type: Number,
-        required: true
     },
     nextClaimTime: {
         type: Date,
