@@ -46,16 +46,15 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 app.post('/send-telegram-data', (req, res) => {
-    const { initData } = req.body;
-
-    if (verifyTelegramData(initData)) {
+        const { initData } = req.body;
         const user = JSON.parse(req.body.user);
-
-        // Redirect to the dashboard with user data as query parameters
+        if(user){
+                // Redirect to the dashboard with user data as query parameters
         res.redirect(`/dashboard?telegramId=${user.id}&firstName=${user.first_name}&lastName=${user.last_name || 'N/A'}&username=${user.username || 'N/A'}&languageCode=${user.language_code || 'N/A'}`);
-    } else {
+        }
+        else {
         res.status(400).send('Invalid data');
-    }
+        }
 });
 app.get('/dashboard', (req, res) => {
     const { telegramId, firstName, lastName, username, languageCode } = req.query;
