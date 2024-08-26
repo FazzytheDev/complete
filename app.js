@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
-const botToken = '7201865706:AAGFt5WbONjscXjgB01AWCHXSdyWQVy0zDM';
+const botToken = '7435021090:AAFc4kC3-vQFWP5-QT7nZ27jy9KWdUsPBwo';
 const bot = new TelegramBot(botToken, {polling: true});
 mongoose.connect('mongodb+srv://fawazogunleye:Aabimbola2022@cluster0.caz9xfe.mongodb.net/heirstonhon?retryWrites=true&w=majority&appName=Cluster0');
 const userSchema = new mongoose.Schema({
@@ -47,7 +47,7 @@ app.get('/', (req, res) => {
 });
 app.post('/send-telegram-data', (req, res) => {
         const { initData } = req.body;
-        const user = JSON.parse(req.body.user);
+        const user = req.body.user;
         if(user){
                 // Redirect to the dashboard with user data as query parameters
         res.redirect(`/dashboard?telegramId=${user.id}&firstName=${user.first_name}&lastName=${user.last_name || 'N/A'}&username=${user.username || 'N/A'}&languageCode=${user.language_code || 'N/A'}`);
@@ -101,5 +101,5 @@ bot.onText(/\/start(?:\s+(.+))?/, async (msg, match) => {
 });
 
 app.listen('3000', ()=>{
-    console.log('send!')
+    console.log('start!')
 })
