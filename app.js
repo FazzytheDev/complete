@@ -11,8 +11,8 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
-// const botToken = '7201865706:AAFL1-MLtGqpvqDsnO2GoaIqB_qcpTwsd0I';
-// const bot = new TelegramBot(botToken, {polling: true});
+const botToken = '7201865706:AAFL1-MLtGqpvqDsnO2GoaIqB_qcpTwsd0I';
+const bot = new TelegramBot(botToken, {polling: true});
 mongoose.connect('mongodb+srv://fawazogunleye:Aabimbola2022@cluster0.caz9xfe.mongodb.net/hon?retryWrites=true&w=majority&appName=Cluster0');
 const userSchema = new mongoose.Schema({
     telegramId: {
@@ -68,27 +68,39 @@ app.get('/dashboard', (req, res) => {
     });
 });
 
-// bot.onText(/\start (.+)/, async(msg, match) => {
-//     const chatId = msg.chat.id;
-//     const referralCode = match[1];
-//     let user = await User.findOne({telegramId: chatId});
+bot.onText(/\/start(?:\s+(.+))?/, async (msg, match) => {
+    const chatId = msg.chat.id.toString(); // Convert to string for MongoDB consistency
+    const referralCode = match[1]; // Capture the referral code, if provided
+    const username = msg.chat.username;
+    try {
+        // Check if the user already exists in the database
+        let user = await User.findOne({ telegramId: chatId });
 
-//     if(!user){
-//         user = new User({telegramId: chatId, referredBy: referralCode})
-//     if(referralCode){
-//         const referrer = await User.findOne({telegramId: referralCode})
-//         if(referralCode){
-//             referrer.referredUsers.push(chatId);
-//             await referrer.save();
-//         }
-//     }
-//     await user.save();
-//     bot.sendMessage(chatId, `Welcome! you were referred by ${referralCode}`)
-// }
-// else{
-//    bot.sendMessage(chatId, `Welcome back!`); 
-// }
-// })
+        if (!user) {
+            // If the user doesn't exist, create a new user
+            user = new User({ telegramId: chatId, username: username, referredBy: referralCode || null });
+
+            if (referralCode) {
+                // If there is a referral code, find the referrer and add this user to their referredUsers list
+                const referrer = await User.findOne({ telegramId: referralCode });
+
+                if (referrer) {
+                    referrer.referredUsers.push(chatId);
+                    await referrer.save();
+                }
+            }
+
+            await user.save();
+            bot.sendMessage(chatId, referralCode ? `Welcome! You were referred by user ${referralCode}.` : 'Welcome!');
+        } else {
+            bot.sendMessage(chatId, `Welcome back!: ${chatId}`);
+        }
+    } catch (error) {
+        console.error('Error handling /start command:', error);
+        bot.sendMessage(chatId, 'Sorry, something went wrong. Please try again later.');
+    }
+});
+
 app.listen('3000', ()=>{
     console.log('send!')
 })
