@@ -13,7 +13,7 @@ app.set('view engine', 'ejs');
 
 const botToken = '7201865706:AAGFt5WbONjscXjgB01AWCHXSdyWQVy0zDM';
 const bot = new TelegramBot(botToken, {polling: true});
-mongoose.connect('mongodb+srv://fawazogunleye:Aabimbola2022@cluster0.caz9xfe.mongodb.net/hon?retryWrites=true&w=majority&appName=Cluster0');
+mongoose.connect('mongodb+srv://fawazogunleye:Aabimbola2022@cluster0.caz9xfe.mongodb.net/heirstonhon?retryWrites=true&w=majority&appName=Cluster0');
 const userSchema = new mongoose.Schema({
     telegramId: {
         type: String,
